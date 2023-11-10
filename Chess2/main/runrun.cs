@@ -1,6 +1,5 @@
 ﻿using Chess2.Pieces;
 using System;
-using Chess2.Pieces;
 //main part of the chess game
 //aiden krahn, 2023
 class ChessGame
@@ -74,15 +73,19 @@ class ChessGame
 
         int startX = move[0] - 'a';
         int startY = '8' - move[1];
+        
         if (startX < 0 || startX >= 8 || startY < 0 || startY >= 8 || Char.IsWhiteSpace(board[startY, startX]) || Char.IsLower(board[startY, startX]))
         {
             return false;
         }
         char v = board[startY, startX];
-        bool result = v.Equals("P");
+        Console.WriteLine(v);
+
+        bool result = v.Equals('P');
         if (result == true)
         {
-            Pawn.Raycast(board, move);
+            //Console.WriteLine("Am I working");
+            return Pawn.Raycast(board, move);
         }
 
         // add more specific move validation here
@@ -98,10 +101,10 @@ class ChessGame
         int startY = '8' - move[1];
         int endX = move[3] - 'a';
         int endY = '8' - move[4];
-        Console.WriteLine(startX);
-        Console.WriteLine(startY);
-        Console.WriteLine(endX);
-        Console.WriteLine(endY);
+        //Console.WriteLine(startX);
+        //Console.WriteLine(startY);
+        //Console.WriteLine(endX);
+        //Console.WriteLine(endY);
 
         char piece1 = board1[startY, startX];
 
