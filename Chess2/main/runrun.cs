@@ -83,12 +83,19 @@ class ChessGame
         char v = board[startY, startX];
         if (v.Equals('P') == true)
         {
-            Console.WriteLine(startX + " " + startY + " " + endX + " " + endY);
             return Pawn.Raycast(board, move);
         }
         else if (v.Equals('R') == true)
         {
             return Rook.Raycast(board, move);
+        }
+        else if (v.Equals('N') == true)
+        {
+            return Knight.Raycast(board, move);
+        }
+        else if (v.Equals('B') == true)
+        {
+            return Bishop.Raycast(board, move);
         }
 
         // add more specific move validation here

@@ -89,7 +89,7 @@ namespace Chess2.Pieces
                 if (startY > endY)//moving down
                 {
                     bool mayI = false;
-                    for (int i = startY - 1; i >= endY; i--)//looking ahead until we reach desired x
+                    for (int i = startY - 1; i >= endY; i--)//looking ahead until we reach desired y
                     {
                         //Console.WriteLine(i);
                         //Console.WriteLine(startX + " " + startY + " " + endX + " " + endY);
@@ -121,7 +121,7 @@ namespace Chess2.Pieces
                 else if (startY < endY)//moving up
                 {
                     bool mayI = false;
-                    for (int i = startY + 1; i >= endY; i++)//looking ahead until we reach desired x
+                    for (int i = startY + 1; i >= endY; i++)//looking ahead until we reach desired y
                     {
                         //Console.WriteLine(i);
                         //Console.WriteLine(startX + " " + startY + " " + endX + " " + endY);
