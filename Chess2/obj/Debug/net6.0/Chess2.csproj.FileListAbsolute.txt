@@ -12,3 +12,17 @@ C:\Users\aiden\source\repos\Chess2\obj\Debug\net6.0\refint\Chess2.dll
 C:\Users\aiden\source\repos\Chess2\obj\Debug\net6.0\Chess2.pdb
 C:\Users\aiden\source\repos\Chess2\obj\Debug\net6.0\Chess2.genruntimeconfig.cache
 C:\Users\aiden\source\repos\Chess2\obj\Debug\net6.0\ref\Chess2.dll
+\\NODRINK\Users\aiden\source\repos\Chess2\bin\Debug\net6.0\Chess2.exe
+\\NODRINK\Users\aiden\source\repos\Chess2\bin\Debug\net6.0\Chess2.deps.json
+\\NODRINK\Users\aiden\source\repos\Chess2\bin\Debug\net6.0\Chess2.runtimeconfig.json
+\\NODRINK\Users\aiden\source\repos\Chess2\bin\Debug\net6.0\Chess2.dll
+\\NODRINK\Users\aiden\source\repos\Chess2\bin\Debug\net6.0\Chess2.pdb
+\\NODRINK\Users\aiden\source\repos\Chess2\obj\Debug\net6.0\Chess2.GeneratedMSBuildEditorConfig.editorconfig
+\\NODRINK\Users\aiden\source\repos\Chess2\obj\Debug\net6.0\Chess2.AssemblyInfoInputs.cache
+\\NODRINK\Users\aiden\source\repos\Chess2\obj\Debug\net6.0\Chess2.AssemblyInfo.cs
+\\NODRINK\Users\aiden\source\repos\Chess2\obj\Debug\net6.0\Chess2.csproj.CoreCompileInputs.cache
+\\NODRINK\Users\aiden\source\repos\Chess2\obj\Debug\net6.0\Chess2.dll
+\\NODRINK\Users\aiden\source\repos\Chess2\obj\Debug\net6.0\refint\Chess2.dll
+\\NODRINK\Users\aiden\source\repos\Chess2\obj\Debug\net6.0\Chess2.pdb
+\\NODRINK\Users\aiden\source\repos\Chess2\obj\Debug\net6.0\Chess2.genruntimeconfig.cache
+\\NODRINK\Users\aiden\source\repos\Chess2\obj\Debug\net6.0\ref\Chess2.dll
