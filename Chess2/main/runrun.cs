@@ -73,25 +73,31 @@ class ChessGame
 
         int startX = move[0] - 'a';
         int startY = '8' - move[1];
-        
+        int endX = move[3] - 'a';
+        int endY = '8' - move[4];
+
         if (startX < 0 || startX >= 8 || startY < 0 || startY >= 8 || Char.IsWhiteSpace(board[startY, startX]) || Char.IsLower(board[startY, startX]))
         {
             return false;
         }
         char v = board[startY, startX];
-        Console.WriteLine(v);
-
-        bool result = v.Equals('P');
-        if (result == true)
+        if (v.Equals('P') == true)
         {
-            //Console.WriteLine("Am I working");
+            Console.WriteLine(startX + " " + startY + " " + endX + " " + endY);
             return Pawn.Raycast(board, move);
+        }
+        else if (v.Equals('R') == true)
+        {
+            return Rook.Raycast(board, move);
         }
 
         // add more specific move validation here
 
-
-        return true;
+        else
+        {
+            return true;
+        }
+        
     }
 
     static void ApplyMove(char[,] board1, string move, char[,] board2)
