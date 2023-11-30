@@ -19,45 +19,67 @@ namespace Chess2.Pieces
             {
                 if(startX > endX)//moving left
                 {
-                    for (int i = startX - 1; i >= endX; i = i - 1)
+                    bool mayI = false;
+                    for (int i = startX - 1; i >= endX; i--)//looking ahead until we reach desired x
                     {
-                        Console.WriteLine(i);
-                        Console.WriteLine(startX + " " + startY + " " + endX + " " + endY);
-                        if (Char.IsLetter(board[startY, i]) == true)
+                        //Console.WriteLine(i);
+                        //Console.WriteLine(startX + " " + startY + " " + endX + " " + endY);
+                        if (Char.IsLetter(board[startY, i]))//if thing ahead is a letter...
                         {
-                            if (endX < i)
+                            if (endX == i)//it's okay to replace the piece...
                             {
-                                Console.WriteLine("1");
-                                return false;
+                                mayI = true;
                             }
-                            else if (endX == i)
+                            else if (endX < i)//but not to go beyond it
                             {
-                                Console.WriteLine("2");
-                                return true;
+                                mayI = false;
                             }
-                            else
-                            {
-                                Console.WriteLine("3");
-                                return false;
-                            }
+                            break;
                         }
-                        else if (Char.IsWhiteSpace(board[startY, i]))
+                        else if (Char.IsWhiteSpace(board[startY, i]))//and we can keep going until there is nothing
                         {
-                            Console.WriteLine("4");
-                            return true;
+                            mayI = true;
                         }
-                        else
-                        {
-                            Console.WriteLine("5");
-                            return false;
-                        }
+                        
                     }
-                    return true;
+                    if (mayI == false)
+                    {
+                        return false;
+                    }
+                    else { return true; }
+                    
 
                 }
                 else if (startX < endX)//moving right
                 {
-                    return true;
+                    bool mayI = false;
+                    for (int i = startX + 1; i <= endX; i++)//looking ahead until we reach desired x
+                    {
+                        //Console.WriteLine(i);
+                        //Console.WriteLine(startX + " " + startY + " " + endX + " " + endY);
+                        if (Char.IsLetter(board[startY, i]))//if thing ahead is a letter...
+                        {
+                            if (endX == i)//it's okay to replace the piece...
+                            {
+                                mayI = true;
+                            }
+                            else if (endX > i)//but not to go beyond it
+                            {
+                                mayI = false;
+                            }
+                            break;
+                        }
+                        else if (Char.IsWhiteSpace(board[startY, i]))//and we can keep going until there is nothing
+                        {
+                            mayI = true;
+                        }
+
+                    }
+                    if (mayI == false)
+                    {
+                        return false;
+                    }
+                    else { return true; }
                 }
                 else { return false; }
 
@@ -66,12 +88,66 @@ namespace Chess2.Pieces
             {
                 if (startY > endY)//moving down
                 {
-                    return true;
+                    bool mayI = false;
+                    for (int i = startY - 1; i >= endY; i--)//looking ahead until we reach desired x
+                    {
+                        //Console.WriteLine(i);
+                        //Console.WriteLine(startX + " " + startY + " " + endX + " " + endY);
+                        if (Char.IsLetter(board[i, startX]))//if thing ahead is a letter...
+                        {
+                            if (endY == i)//it's okay to replace the piece...
+                            {
+                                mayI = true;
+                            }
+                            else if (endY < i)//but not to go beyond it
+                            {
+                                mayI = false;
+                            }
+                            break;
+                        }
+                        else if (Char.IsWhiteSpace(board[i, startX]))//and we can keep going until there is nothing
+                        {
+                            mayI = true;
+                        }
+
+                    }
+                    if (mayI == false)
+                    {
+                        return false;
+                    }
+                    else { return true; }
                 }
 
                 else if (startY < endY)//moving up
                 {
-                    return true;
+                    bool mayI = false;
+                    for (int i = startY + 1; i >= endY; i++)//looking ahead until we reach desired x
+                    {
+                        //Console.WriteLine(i);
+                        //Console.WriteLine(startX + " " + startY + " " + endX + " " + endY);
+                        if (Char.IsLetter(board[i, startX]))//if thing ahead is a letter...
+                        {
+                            if (endY == i)//it's okay to replace the piece...
+                            {
+                                mayI = true;
+                            }
+                            else if (endY < i)//but not to go beyond it
+                            {
+                                mayI = false;
+                            }
+                            break;
+                        }
+                        else if (Char.IsWhiteSpace(board[i, startX]))//and we can keep going until there is nothing
+                        {
+                            mayI = true;
+                        }
+
+                    }
+                    if (mayI == false)
+                    {
+                        return false;
+                    }
+                    else { return true; }
                 }
                 else {return false; }
             }
