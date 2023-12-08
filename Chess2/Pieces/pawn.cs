@@ -14,7 +14,7 @@ namespace Chess2.Pieces
             int startY = '8' - move[1];
             int endX = move[3] - 'a';
             int endY = '8' - move[4];
-            Console.WriteLine(startX + " " + startY + " " + endX + " " + endY);
+            //Console.WriteLine(startX + " " + startY + " " + endX + " " + endY);
             if (startY == 6 && (endY == 4 || endY == 5))//allows piece to jump two on first turn
             {
                 return true;

@@ -75,8 +75,9 @@ class ChessGame
         int startY = '8' - move[1];
         int endX = move[3] - 'a';
         int endY = '8' - move[4];
+        Console.WriteLine(startX + " " + startY + " " + endX + " " + endY);
 
-        if (startX < 0 || startX >= 8 || startY < 0 || startY >= 8 || Char.IsWhiteSpace(board[startY, startX]) || Char.IsLower(board[startY, startX]))
+        if (startX < 0 || startX >= 8 || startY < 0 || startY >= 8 || Char.IsWhiteSpace(board[startY, startX]) || Char.IsLower(board[startY, startX]) || Char.IsUpper(board[endY, endX]))
         {
             return false;
         }
