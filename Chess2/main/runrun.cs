@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chess2.Pieces;
+using System;
 //main part of the chess game
 //aiden krahn, 2023
 class ChessGame
@@ -72,15 +73,39 @@ class ChessGame
 
         int startX = move[0] - 'a';
         int startY = '8' - move[1];
-        if (startX < 0 || startX >= 8 || startY < 0 || startY >= 8 || Char.IsWhiteSpace(board[startY, startX]) || Char.IsLower(board[startY, startX]))
+        int endX = move[3] - 'a';
+        int endY = '8' - move[4];
+        Console.WriteLine(startX + " " + startY + " " + endX + " " + endY);
+
+        if (startX < 0 || startX >= 8 || startY < 0 || startY >= 8 || Char.IsWhiteSpace(board[startY, startX]) || Char.IsLower(board[startY, startX]) || Char.IsUpper(board[endY, endX]))
         {
             return false;
+        }
+        char v = board[startY, startX];
+        if (v.Equals('P') == true)
+        {
+            return Pawn.Raycast(board, move);
+        }
+        else if (v.Equals('R') == true)
+        {
+            return Rook.Raycast(board, move);
+        }
+        else if (v.Equals('N') == true)
+        {
+            return Knight.Raycast(board, move);
+        }
+        else if (v.Equals('B') == true)
+        {
+            return Bishop.Raycast(board, move);
         }
 
         // add more specific move validation here
 
-
-        return true;
+        else
+        {
+            return true;
+        }
+        
     }
 
     static void ApplyMove(char[,] board1, string move, char[,] board2)
@@ -90,10 +115,10 @@ class ChessGame
         int startY = '8' - move[1];
         int endX = move[3] - 'a';
         int endY = '8' - move[4];
-        Console.WriteLine(startX);
-        Console.WriteLine(startY);
-        Console.WriteLine(endX);
-        Console.WriteLine(endY);
+        //Console.WriteLine(startX);
+        //Console.WriteLine(startY);
+        //Console.WriteLine(endX);
+        //Console.WriteLine(endY);
 
         char piece1 = board1[startY, startX];
 

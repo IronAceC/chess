@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "yIH1KXnYbG3pFAVTCJnuEVPAz8pUirAj6gk7afCjK0y2RHUt5a3s4IiKQpbZCkKynUvQHhzdFyUPczMSlfVjlA==",
+  "dgSpecHash": "Yar477BG99bqMbSfRPqgOuxuFOnIRAMrbpuZN8S8OPIBZ4TQkCSHrIEnUx0/uHhhVF9BANyqquTdBycBhBrIWw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\aiden\\source\\repos\\Chess2\\Chess2.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\aiden\\Downloads\\chess-addPieces\\chess-addPieces\\Chess2\\Chess2.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\aiden\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.25\\microsoft.windowsdesktop.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\aiden\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.25\\microsoft.netcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\aiden\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.25\\microsoft.aspnetcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\aiden\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.25\\microsoft.netcore.app.host.win-x64.6.0.25.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Chess2.Pieces
 {
-    public class Fatherpiece
+    internal class king
     {
-        public bool alive = true;
     }
 }
