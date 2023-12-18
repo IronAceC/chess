@@ -58,8 +58,9 @@ class ChessGame
             {
                 Console.Write(board[i, j] + " ");
             }
-            Console.WriteLine();
+            Console.WriteLine(8 + -i);//added board coordinates
         }
+        Console.WriteLine("a b c d e f g h");//added coordinates to the board
         Console.WriteLine("\n");
     }
 
@@ -97,6 +98,14 @@ class ChessGame
         else if (v.Equals('B') == true)
         {
             return Bishop.Raycast(board, move);
+        }
+        else if (v.Equals('Q') == true)
+        {
+            return Queen.Raycast(board, move);
+        }
+        else if (v.Equals('K') == true)
+        {
+            return King.Raycast(board, move);
         }
 
         // add more specific move validation here
