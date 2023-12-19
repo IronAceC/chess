@@ -1,7 +1,7 @@
 ﻿using Chess2.Pieces;
 using System;
 //main part of the chess game
-//aiden krahn, 2023
+//Aiden Krahn, 2023
 class ChessGame
 {
     
@@ -56,11 +56,22 @@ class ChessGame
         {
             for (int j = 0; j < 8; j++)
             {
-                Console.Write(board[i, j] + " ");
+                if (Char.IsUpper(board[i, j]) == true)
+                {
+                    Console.ForegroundColor = ConsoleColor.Magenta; Console.Write(board[i, j] + " ");
+                }
+                else if (Char.IsLower(board[i, j]) == true)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow; Console.Write(board[i, j] + " ");
+                }
+                else
+                {
+                    Console.Write(board[i, j] + " ");
+                }//takes stuff from lists of board to board
             }
-            Console.WriteLine(8 + -i);//added board coordinates
+            Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine(8 + -i);//added board coordinates
         }
-        Console.WriteLine("a b c d e f g h");//added coordinates to the board
+        Console.ForegroundColor = ConsoleColor.Blue;  Console.WriteLine("a b c d e f g h");//added coordinates to the board
         Console.WriteLine("\n");
     }
 
@@ -169,8 +180,13 @@ class ChessGame
             if (blackzero == 1)
             {
                 PrintBoard(board1);
-                Console.WriteLine("White, Enter your move: ");
+                Console.WriteLine("Pink, Enter your move: ");
                 string move = Console.ReadLine();
+                if (move == "kill myself")
+                {
+                    Console.WriteLine("You Should Kill Yourself Now");
+                    break;
+                }
 
                 if (IsMoveValid(board1, move))
                 {
@@ -187,13 +203,34 @@ class ChessGame
                 {
                     Console.WriteLine("Invalid move. Try again.");
                 }
+                bool kingAlive = false;
+                for (int i = 0; i < 8; i++)
+                {
+                    for (int j = 0; j < 8; j++)
+                    {
+                        if (board1[i, j] == 'k')
+                        {
+                            kingAlive = true; break;
+                        }
+                    }
+                }
+                if (kingAlive == false)
+                {
+                    Console.WriteLine("Pink Won");
+                    break;
+                }
             }
 
             if (blackzero == 0)
             {
                 PrintBoard(board2);
-                Console.WriteLine("Black, Enter your move: ");
+                Console.WriteLine("Pink, Enter your move: ");
                 string move2 = Console.ReadLine();
+                if (move2 == "kill myself")
+                {
+                    Console.WriteLine("You Should Kill Yourself Now");
+                    break;
+                }
 
                 if (IsMoveValid(board2, move2))
                 {
@@ -208,7 +245,22 @@ class ChessGame
                 {
                     Console.WriteLine("Invalid move. Try again.");
                 }
-
+                bool kingAlive = false;
+                for (int i = 0; i < 8; i++)
+                {
+                    for (int j = 0; j < 8; j++)
+                    {
+                        if (board1[i, j] == 'K')
+                        {
+                            kingAlive = true; break;
+                        }
+                    }
+                }
+                if (kingAlive == false)
+                {
+                    Console.WriteLine("Pink Won");
+                    break;
+                }
 
             }
         }

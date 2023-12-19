@@ -76,7 +76,7 @@ namespace Chess2.Pieces
                     {
                         for (int i = -(endX - startX); i <= 0; i++)
                         {
-                            Console.WriteLine(i);
+                            //Console.WriteLine(i);
                             startX += 1;
                             startY -= 1;
                             if (startX == endX)
@@ -99,7 +99,7 @@ namespace Chess2.Pieces
                     }
                     for (int i = startX - endX; i <= 0; i++)
                     {
-                        Console.WriteLine(i);
+                        //Console.WriteLine(i);
                         startX += 1;
                         startY += 1;
                         if (startX == endX)
