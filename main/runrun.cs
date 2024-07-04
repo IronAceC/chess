@@ -75,7 +75,7 @@ class ChessGame
         Console.WriteLine("\n");
     }
 
-    static bool IsMoveValid(char[,] board, string move, bool passantable)
+    static bool IsMoveValid(char[,] board, string move, ref (double,int) passantable1, ref (double,int) passantable2, char[,] board2)
     {
 
         if (move.Length != 5 || move[2] != ' ')
@@ -96,7 +96,11 @@ class ChessGame
         char v = board[startY, startX];
         if (v.Equals('P') == true)
         {
-            return Pawn.Raycast(board, move,passantable);
+            if (startY == 6 && (endY == 4))
+            {
+                passantable1 = (-endY + 7, -endX + 7);
+            }
+            return Pawn.Raycast(board, move,ref passantable2);
         }
         else if (v.Equals('R') == true)
         {
@@ -116,7 +120,7 @@ class ChessGame
         }
         else if (v.Equals('K') == true)
         {
-            return King.Raycast(board, move);
+            return King.Raycast(board, move, board2);
         }
 
         // add more specific move validation here
@@ -128,7 +132,7 @@ class ChessGame
         
     }
 
-    static void ApplyMove(char[,] board1, string move, char[,] board2)
+    static void ApplyMove(char[,] board1, string move, char[,] board2, (double,int) passantable)
     {
         // Apply the move to update the board
         int startX = move[0] - 'a';
@@ -144,6 +148,14 @@ class ChessGame
 
         board1[startY, startX] = ' ';//deletes where piece was
         board1[endY, endX] = piece1;
+        for (int i = 0; i < 7; i++)
+        {
+            if (passantable == (11,i))
+            {
+                board1[3, i] = ' ';
+                board2[4, -i + 7] = ' ';
+            }
+        }
 
         //when moves are applied to board2, they have to be flipped. remember how to use graphing and algebra?
         startX = -1 * startX + 7;
@@ -175,8 +187,9 @@ class ChessGame
 
         // Game loop
         int blackzero = 1;//black moves when this variable is zero (get it?)
-        bool passantable1 = false;
-        bool passantable2 = false;
+        (double, int) passantable1 = (9, 9);
+        (double, int) passantable2 = (9, 9);
+        
         while (true)
         {
             if (blackzero == 1)
@@ -190,10 +203,11 @@ class ChessGame
                     break;
                 }
 
-                if (IsMoveValid(board1, move, passantable1))
+                if (IsMoveValid(board1, move,ref passantable1,ref passantable2, board2))
                 {
                     // Apply the move
-                    ApplyMove(board1, move, board2);
+                    ApplyMove(board1, move, board2,passantable2);
+                    passantable2 = (9,9);
 
                     // Display the updated board
                     PrintBoard(board1);
@@ -242,10 +256,11 @@ class ChessGame
                     break;
                 }
 
-                if (IsMoveValid(board2, move2, passantable2))
+                if (IsMoveValid(board2, move2,ref passantable2,ref passantable1, board1))
                 {
                     // Apply the move
-                    ApplyMove(board2, move2, board1);
+                    ApplyMove(board2, move2, board1, passantable1);
+                    passantable1 = (9, 9);
 
                     // Display the updated board
                     PrintBoard(board2);
