@@ -146,7 +146,7 @@ namespace Chess2.Pieces
                     {
                         if ((startY , startX + 1) == passantable)
                         {
-                            if (endX == startX - 1 && endY == startY + 1)
+                            if (endX == startX + 1 && endY == startY - 1)
                             {
                                 passantable = (11, startX + 1);
                                  
