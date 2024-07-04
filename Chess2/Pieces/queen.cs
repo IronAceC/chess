@@ -17,68 +17,72 @@ namespace Chess2.Pieces
             bool mayI = false;
             //Console.WriteLine(startX + " " + startY + " " + endX + " " + endY);
 
-            if (endX < startX)//moving left
+            if (endX > startX && endY != startY)//moving right
             {
-                if (endY < startY)//and moving up
+                if (endY < startY)//and moving up //this one works
                 {
-                    if (startX - endX != startY - endY)//if they don't go exactly diagonal
+                    if ((endX - startX) != startY - endY)//if they don't go exactly diagonal
                     {
                         mayI = false;
                     }
                     else
                     {
-                        for (int i = -(startX - endX); i <= 0; i++)
+                        for (int i = (startX - endX); i <= 0; i++)
                         {
-                            startX -= 1;
-                            startY -= 1;
-                            if (startX == endX)
-                            {
-                                mayI = true; break;
-                            }
-                            if (Char.IsLetter(board[startY, startX]))
-                            {
-                                mayI = false; break;
-                            }
-                        }
-                    }
-
-                }
-                else if (endY > startY)//moving down
-                {
-                    if (startX - endX != endY - startY)
-                    {
-                        mayI = false;
-                    }
-                    for (int i = startX - endX; i >= 0; i--)
-                    {
-                        startX -= 1;
-                        startY += 1;
-                        if (startX == endX)
-                        {
-                            mayI = true; break;
-                        }
-                        if (Char.IsLetter(board[startY, startX]))
-                        {
-                            mayI = false; break;
-                        }
-                    }
-                }
-            }
-            else if (endX > startX)//moving right
-            {
-                if (endY < startY)//and moving up
-                {
-                    if (endX - startX != startY - endY)//if they don't go exactly diagonal
-                    {
-                        mayI = false;
-                    }
-                    else
-                    {
-                        for (int i = -(endX - startX); i <= 0; i++)
-                        {
-                            Console.WriteLine(i);
+                            //Console.WriteLine(i);
                             startX += 1;
                             startY -= 1;
+                            Console.WriteLine(startX + " " + startY + " " + endX + " " + endY);
+                            if (startX == endX)
+                            {
+                                mayI = true; break;
+                            }
+                            if (Char.IsLetter(board[endY, endX]))
+                            {
+                                mayI = false; break;
+                            }
+                        }
+                    }
+
+                }
+                else if (endY > startY)//moving down //this one works
+                {
+                    if ((startX - endX) != endY - startY)
+                    {
+                        mayI = false;
+                    }
+                    for (int i = (startX - endX); i <= 0; i++)
+                    {
+                        startX += 1;
+                        startY += 1;
+                        //Console.WriteLine(startX + " " + startY + " " + endX + " " + endY);
+                        if (startX == endX)
+                        {
+                            mayI = true; break;
+                        }
+                        if (Char.IsLetter(board[startY, startX]))
+                        {
+                            mayI = false; break;
+                        }
+                    }
+                }
+            }
+            else if (endX < startX && endY != startY)//moving left
+            {
+                if (endY < startY)//and moving up //this one works
+                {
+                    if (-(endX - startX) != startY - endY)//if they don't go exactly diagonal
+                    {
+                        mayI = false;
+                    }
+                    else
+                    {
+                        for (int i = (endX - startX); i <= 0; i++)
+                        {
+                            //Console.WriteLine(i);
+                            startX -= 1;
+                            startY -= 1;
+                            //Console.WriteLine(startX + " " + startY + " " + endX + " " + endY);
                             if (startX == endX)
                             {
                                 mayI = true; break;
@@ -91,17 +95,18 @@ namespace Chess2.Pieces
                     }
 
                 }
-                else if (endY > startY)//moving down
+                else if (endY > startY)//moving down //this one works
                 {
-                    if (endX - startX != endY - startY)
+                    if (-(endX - startX) != endY - startY)
                     {
                         mayI = false;
                     }
-                    for (int i = startX - endX; i <= 0; i++)
+                    for (int i = -(startX - endX); i <= 0; i++)
                     {
-                        Console.WriteLine(i);
-                        startX += 1;
+                        //Console.WriteLine(i);
+                        startX -= 1;
                         startY += 1;
+                        Console.WriteLine(startX + " " + startY + " " + endX + " " + endY);
                         if (startX == endX)
                         {
                             mayI = true; break;
@@ -113,7 +118,7 @@ namespace Chess2.Pieces
                     }
                 }
             }
-            else if (startX != endX || startY == endY)//moving horizontally
+            else if (startX != endX && startY == endY)//moving horizontally
             {
                 if (startX > endX)//moving left
                 {
@@ -139,12 +144,6 @@ namespace Chess2.Pieces
                         }
 
                     }
-                    if (mayI == false)
-                    {
-                        return false;
-                    }
-                    else { return true; }
-
 
                 }
                 else if (startX < endX)//moving right
@@ -171,18 +170,13 @@ namespace Chess2.Pieces
                         }
 
                     }
-                    if (mayI == false)
-                    {
-                        return false;
-                    }
-                    else { return true; }
-                }
-                else { return false; }
 
+                }
             }
-            else if (startY != endY || startX == endX)//moving vertically
+            else if (startY != endY && startX == endX)//moving vertically
             {
-                if (startY > endY)//moving down
+                Console.WriteLine("GOGOGO");
+                if (startY < endY)//moving down
                 {
                     for (int i = startY - 1; i >= endY; i--)//looking ahead until we reach desired y
                     {
@@ -206,14 +200,9 @@ namespace Chess2.Pieces
                         }
 
                     }
-                    if (mayI == false)
-                    {
-                        return false;
-                    }
-                    else { return true; }
                 }
 
-                else if (startY < endY)//moving up
+                else if (startY > endY)//moving up
                 {
                     for (int i = startY + 1; i >= endY; i++)//looking ahead until we reach desired y
                     {
@@ -237,25 +226,20 @@ namespace Chess2.Pieces
                         }
 
                     }
-
-                    if (mayI == false)
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        return true;
-                    }
                 }
             }
-            if (mayI == false)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
         }
+        if (mayI == false)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+        
     }
+
+
 }
+

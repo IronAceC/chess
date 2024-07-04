@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Chess2.Pieces
 {
-    public class Fatherpiece
+    public class Fatherpiece//i'm useless
     {
         public bool alive = true;
     }
