@@ -75,7 +75,7 @@ class ChessGame
         Console.WriteLine("\n");
     }
 
-    static bool IsMoveValid(char[,] board, string move)
+    static bool IsMoveValid(char[,] board, string move, bool passantable)
     {
 
         if (move.Length != 5 || move[2] != ' ')
@@ -96,7 +96,7 @@ class ChessGame
         char v = board[startY, startX];
         if (v.Equals('P') == true)
         {
-            return Pawn.Raycast(board, move);
+            return Pawn.Raycast(board, move,passantable);
         }
         else if (v.Equals('R') == true)
         {
@@ -175,6 +175,8 @@ class ChessGame
 
         // Game loop
         int blackzero = 1;//black moves when this variable is zero (get it?)
+        bool passantable1 = false;
+        bool passantable2 = false;
         while (true)
         {
             if (blackzero == 1)
@@ -188,7 +190,7 @@ class ChessGame
                     break;
                 }
 
-                if (IsMoveValid(board1, move))
+                if (IsMoveValid(board1, move, passantable1))
                 {
                     // Apply the move
                     ApplyMove(board1, move, board2);
@@ -214,6 +216,14 @@ class ChessGame
                         }
                     }
                 }
+                for (int j = 0; j < 8; j++)
+                {
+                    if (board1[0, j] == 'P')
+                    {
+                        board1[0, j] = 'Q';
+                        board2[7, (-j + 7)] = 'q';
+                    }
+                }
                 if (kingAlive == false)
                 {
                     Console.WriteLine("Pink Won");
@@ -232,7 +242,7 @@ class ChessGame
                     break;
                 }
 
-                if (IsMoveValid(board2, move2))
+                if (IsMoveValid(board2, move2, passantable2))
                 {
                     // Apply the move
                     ApplyMove(board2, move2, board1);
@@ -254,6 +264,15 @@ class ChessGame
                         {
                             kingAlive = true; break;
                         }
+                        
+                    }
+                }
+                for (int j = 0; j < 8; j++)
+                {
+                    if (board2[0, j] == 'P')
+                    {
+                        board2[0, j] = 'Q';
+                        board1[7, (-j + 7)] = 'q';
                     }
                 }
                 if (kingAlive == false)
