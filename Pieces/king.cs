@@ -21,11 +21,11 @@ namespace Chess2.Pieces
                 {
                     mayI = true;
                 }
-                if (startY == endY)
+                else if (startY == endY)
                 {
                     mayI = true;
                 }
-                if (startY - 1 == endY)
+                else if (startY - 1 == endY)
                 {
                     mayI = true;
                 }
@@ -40,7 +40,7 @@ namespace Chess2.Pieces
                 {
                     mayI = true;
                 }
-                if (startY - 1 == endY)
+                else if (startY - 1 == endY)
                 {
                     mayI = true;
                 }
@@ -55,11 +55,11 @@ namespace Chess2.Pieces
                 {
                     mayI = true;
                 }
-                if (startY == endY)
+                else if (startY == endY)
                 {
                     mayI = true;
                 }
-                if (startY - 1 == endY)
+                else if (startY - 1 == endY)
                 {
                     mayI = true;
                 }
